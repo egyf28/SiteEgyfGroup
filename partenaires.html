@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos Partenaires - AFRICA BIOMEDICAL NETWORK</title>
+  <link rel="icon" href="logomedical.JPG" type="image/x-icon" />
+  
+  <link rel="stylesheet" href="stylemedical.css" />
+  <script src="scriptmedical.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* 🌍 Arrière-plan global */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("logomedical.JPG");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed; /* image fixe */
+      color: #fff; /* texte en blanc pour contraste */
+    }
+
+    /* 🔲 Couche de transparence sombre pour la lisibilité */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6); /* voile sombre */
+      z-index: -1;
+    }
+
+    h1, h2, p {
+      text-align: center;
+      color: #fff;
+    }
+
+    .navbar {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+    }
+
+    .nav-list li a {
+      color: #fff;
+    }
+
+    .carousel-wrapper {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 20px auto;
+      max-width: 1000px;
+    }
+  </style>
+</head>
+<body>
+
+
+
+<header>
+    <div class="navbar">
+      <span class="menu-toggle">☰</span>
+      <ul class="nav-list">
+       <li><a href="index.html">ACCUEIL</a></li>
+        <li><a href="#qui-sommes-nous">QUI SOMMES-NOUS</a></li>
+        <li><a href="#services">NOS ACTIVITES</a></li>
+        <li><a href="#partenaires">NOS PARTENAIRES</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <h1 class="marquee">Bienvenue chez <span>EGYF GROUP</span></h1>
+  </header>
+<main>
+  <section id="partenaires" data-aos="fade-up">
+    <h2>NOS PARTENAIRES</h2>
+    <div class="carousel-wrapper">
+      <button class="nav-btn left" id="prev">&#10094;</button>
+      
+      <div class="carousel-container" id="carousel">
+        <div class="carousel">
+          <div class="service-card">
+            <img src="partenaire1.jpg" alt="Partenaire 1">
+            <p>PARTENAIRE 1</p>
+          </div>
+          <div class="service-card">
+            <img src="partenaire2.jpg" alt="Partenaire 2">
+            <p>PARTENAIRE 2</p>
+          </div>
+          <div class="service-card">
+            <img src="partenaire3.jpg" alt="Partenaire 3">
+            <p>PARTENAIRE 3</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-dots" id="carousel-dots"></div>
+      <button class="nav-btn right" id="next">&#10095;</button>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
