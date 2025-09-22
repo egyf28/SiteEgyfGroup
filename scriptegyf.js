@@ -83,3 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Lance le défilement auto
   setTimeout(() => startAutoScroll(), 200);
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.getElementById("mobile-menu");
+  const navList = document.querySelector(".nav-list");
+
+  menuToggle.addEventListener("click", () => {
+    navList.classList.toggle("active");
+  });
+});
+
