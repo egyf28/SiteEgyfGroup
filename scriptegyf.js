@@ -1,6 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  /* ===============================
+     MENU NAVBAR MOBILE
+  ================================ */
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navList = document.querySelector(".nav-list");
+
+  if (menuToggle && navList) {
+    menuToggle.addEventListener("click", () => {
+      navList.classList.toggle("active");
+    });
+  }
+
+  /* ===============================
+     CAROUSEL SERVICES
+  ================================ */
   const carouselContainer = document.getElementById("carousel");
-  if (!carouselContainer) return; // aucune section carousel → on arrête
+  if (!carouselContainer) return;
 
   const carousel = carouselContainer.querySelector(".carousel");
   const nextBtn = document.getElementById("next");
@@ -8,28 +24,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const dotsContainer = document.getElementById("carousel-dots");
   const cards = carousel.querySelectorAll(".service-card");
 
-  if (cards.length === 0) return;
+  if (!carousel || cards.length === 0) return;
 
   let scrollAmount = cards[0].offsetWidth + 20;
   let autoScrollInterval;
 
-  // recalcul si resize
+  /* Recalcul au resize */
   window.addEventListener("resize", () => {
     scrollAmount = cards[0].offsetWidth + 20;
   });
 
-  // Crée les points
-  cards.forEach((_, i) => {
+  /* Création des dots */
+  cards.forEach((_, index) => {
     const dot = document.createElement("span");
     dot.classList.add("dot");
-    if (i === 0) dot.classList.add("active");
+    if (index === 0) dot.classList.add("active");
+
     dot.addEventListener("click", () => {
-      carousel.scrollTo({ left: i * scrollAmount, behavior: "smooth" });
+      carousel.scrollTo({
+        left: index * scrollAmount,
+        behavior: "smooth"
+      });
       updateDots();
       resetAutoScroll();
     });
+
     dotsContainer.appendChild(dot);
   });
+
   const dots = dotsContainer.querySelectorAll(".dot");
 
   function updateDots() {
@@ -38,22 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (dots[currentIndex]) dots[currentIndex].classList.add("active");
   }
 
-  // Boutons
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
-      resetAutoScroll();
-    });
-  }
+  /* Boutons */
+  nextBtn?.addEventListener("click", () => {
+    carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    resetAutoScroll();
+  });
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-      resetAutoScroll();
-    });
-  }
+  prevBtn?.addEventListener("click", () => {
+    carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    resetAutoScroll();
+  });
 
-  // Auto défilement
+  /* Auto scroll */
   function startAutoScroll() {
     autoScrollInterval = setInterval(() => {
       if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 1) {
@@ -73,22 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(startAutoScroll, 5000);
   }
 
-  // Survol = pause
+  /* Pause au survol */
   carousel.addEventListener("mouseover", stopAutoScroll);
   carousel.addEventListener("mouseout", startAutoScroll);
 
-  // Scroll → maj des dots
+  /* Mise à jour des dots au scroll */
   carousel.addEventListener("scroll", updateDots);
 
-  // Lance le défilement auto
-  setTimeout(() => startAutoScroll(), 200);
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("mobile-menu");
-  const navList = document.querySelector(".nav-list");
+  /* Lancement auto */
+  setTimeout(startAutoScroll, 200);
 
-  menuToggle.addEventListener("click", () => {
-    navList.classList.toggle("active");
-  });
 });
-
